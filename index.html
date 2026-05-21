@@ -1,22 +1,101 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frises-Chronos</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChronoNova — Créez des frises chronologiques modernes</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <main class="landing-shell">
+    <header class="hero-header">
+      <div class="brand-row">
+        <img src="assets/logo.png" alt="ChronoNova" class="brand-logo" />
+        <div>
+          <p class="brand-name">ChronoNova</p>
+          <p class="brand-tag">Éditeur de frises chronologiques</p>
+        </div>
+      </div>
 
-<header class="hero">
-  <h1>Frises-Chronos</h1>
-  <p>Créer des frises chronologiques simplement et proprement</p>
+      <div class="hero-copy">
+        <h1>Créer des frises chronologiques modernes gratuitement</h1>
+        <p>Un éditeur sans backend, rapide et responsive pour construire et sauvegarder vos frises éducatives en quelques clics.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="editor.html">Créer une frise</a>
+          <a class="btn btn-secondary" href="#features">Voir les fonctionnalités</a>
+        </div>
+      </div>
 
-  <a class="btn" href="editor.html">Commencer</a>
-</header>
+      <section class="hero-preview">
+        <div class="preview-card">
+          <span class="preview-label">Aperçu rapide</span>
+          <div class="timeline-preview">
+            <div class="timeline-node active">1789</div>
+            <div class="timeline-node">1804</div>
+            <div class="timeline-node">1914</div>
+            <div class="timeline-node">1969</div>
+          </div>
+          <p class="preview-text">Un éditeur fluide pensé pour les étudiants, professeurs et créateurs de contenus.</p>
+        </div>
+      </section>
+    </header>
 
-</body>
-</html></footer>
+    <section id="features" class="features-section">
+      <div class="section-intro">
+        <p class="section-subtitle">Transformez vos idées en timeline</p>
+        <h2>Un outil simple pour des frises chronologiques professionnelles</h2>
+      </div>
 
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Ajouter, modifier, supprimer</h3>
+          <p>Gérez vos événements avec une interface claire. Chaque élément reste accessible et réorganisable.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Export PNG & PDF</h3>
+          <p>Enregistrez votre frise et partagez-la facilement grâce à l’export visuel et le projet .bin.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Stockage local automatique</h3>
+          <p>Votre projet est sauvegardé automatiquement dans le navigateur, prêt à reprendre à tout moment.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Responsive & rapide</h3>
+          <p>Fonctionne sur mobile, tablette et ordinateur sans installation supplémentaire.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="why-section">
+      <div class="why-copy">
+        <h2>Pourquoi choisir ChronoNova ?</h2>
+        <p>Pour une expérience propre, moderne et inspirée des meilleurs outils SaaS. Un éditeur accessible à tous, même aux débutants.</p>
+      </div>
+      <div class="why-values">
+        <div class="value-card">
+          <strong>Interface moderne</strong>
+          <span>Design sombre, animations fluides et composants minimalistes.</span>
+        </div>
+        <div class="value-card">
+          <strong>Sans backend</strong>
+          <span>Aucune configuration serveur nécessaire. Hébergement compatible GitHub Pages.</span>
+        </div>
+        <div class="value-card">
+          <strong>100% gratuit</strong>
+          <span>Utilisation libre pour projets scolaires, ateliers ou cours en ligne.</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="hero-footer">
+      <p>ChronoNova • Un éditeur de timelines créé pour l’éducation et la créativité</p>
+      <p>Prêt pour GitHub Pages — aucun backend requis.</p>
+    </footer>
+  </main>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
