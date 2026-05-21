@@ -1,16 +1,16 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  color: #222;
+  font-family: Arial;
+  background: #f5f6f8;
 }
 
 .topbar {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   padding: 10px;
   background: white;
   border-bottom: 1px solid #ddd;
+  flex-wrap: wrap;
 }
 
 .topbar input {
@@ -26,15 +26,57 @@ button {
   cursor: pointer;
 }
 
-.layout {
-  display: grid;
-  grid-template-columns: 220px 1fr 250px;
-  height: calc(100vh - 50px);
+.timeline-container {
+  padding: 10px;
 }
 
-.sidebar, .panel {
+.controls {
+  margin-bottom: 10px;
+}
+
+#timeline {
+  position: relative;
+  height: 500px;
+  background: #eef2f7;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+}
+
+/* LINE */
+.line {
+  position: absolute;
+  top: 50%;
+  width: 10000px;
+  height: 3px;
+  background: #2d6cdf;
+}
+
+/* EVENT */
+.event {
+  position: absolute;
+  top: 45%;
+  transform: translateX(-50%);
   background: white;
-  border-right: 1px solid #ddd;
+  border: 1px solid #ccc;
+  padding: 6px;
+  border-radius: 6px;
+  min-width: 120px;
+  cursor: grab;
+  transition: 0.2s;
+}
+
+.event:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* YEARS */
+.year {
+  position: absolute;
+  top: 0;
+  font-size: 10px;
+  color: #666;
+}  border-right: 1px solid #ddd;
   padding: 10px;
 }
 
