@@ -11,7 +11,7 @@ function exportBIN() {
 
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = "frise.bin";
+  a.download = "frises-chronos.bin";
   a.click();
 }
 
