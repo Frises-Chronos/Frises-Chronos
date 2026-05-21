@@ -1,23 +1,29 @@
 let events = [];
 let selectedId = null;
+
 let zoom = 1;
 
 const timeline = document.getElementById("timeline");
-const list = document.getElementById("list");
+const zoomInput = document.getElementById("zoom");
 
+const PIXEL_PER_YEAR = 2;
+const OFFSET = 5000;
+const SNAP = 1; // snap 1 année
+
+/* ADD EVENT */
 function addEvent() {
-  const date = document.getElementById("date").value;
+  const date = Number(document.getElementById("date").value);
   const title = document.getElementById("eventTitle").value;
   const desc = document.getElementById("desc").value;
 
   if (!date || !title) {
-    alert("Veuillez remplir la date et le titre");
+    alert("Remplis date + titre");
     return;
   }
 
   events.push({
     id: Date.now(),
-    date: Number(date),
+    date,
     title,
     description: desc
   });
@@ -25,60 +31,72 @@ function addEvent() {
   render();
 }
 
+/* SNAP */
+function snap(year) {
+  return Math.round(year / SNAP) * SNAP;
+}
+
+/* RENDER */
 function render() {
   timeline.innerHTML = "";
-  list.innerHTML = "";
 
   const line = document.createElement("div");
   line.className = "line";
   timeline.appendChild(line);
 
+  drawYears();
+
   events.sort((a,b) => a.date - b.date);
 
   events.forEach(e => {
 
-    const x = e.date * zoom + 3000;
+    const x = (e.date * PIXEL_PER_YEAR * zoom) + OFFSET;
 
     const div = document.createElement("div");
     div.className = "event";
     div.style.left = x + "px";
+
     div.innerHTML = `<b>${e.date}</b><br>${e.title}`;
 
     div.onclick = () => selectEvent(e.id);
 
-    timeline.appendChild(div);
+    /* DRAG */
+    let drag = false;
 
-    const item = document.createElement("div");
-    item.innerText = `${e.date} - ${e.title}`;
-    item.onclick = () => selectEvent(e.id);
-    list.appendChild(item);
+    div.onmousedown = () => drag = true;
+    document.onmouseup = () => drag = false;
+
+    document.onmousemove = (ev) => {
+      if (!drag) return;
+
+      const newYear = (ev.pageX - OFFSET) / (PIXEL_PER_YEAR * zoom);
+      e.date = snap(newYear);
+
+      render();
+    };
+
+    timeline.appendChild(div);
   });
 }
 
-function selectEvent(id) {
-  selectedId = id;
-  const e = events.find(x => x.id === id);
+/* YEARS GRID */
+function drawYears() {
+  for (let y = -500; y <= 2050; y += 50) {
 
-  document.getElementById("date").value = e.date;
-  document.getElementById("eventTitle").value = e.title;
-  document.getElementById("desc").value = e.description;
+    const x = (y * PIXEL_PER_YEAR * zoom) + OFFSET;
+
+    const div = document.createElement("div");
+    div.className = "year";
+    div.style.left = x + "px";
+    div.innerText = y;
+
+    timeline.appendChild(div);
+  }
 }
 
-function saveEdit() {
-  const e = events.find(x => x.id === selectedId);
-  if (!e) return;
-
-  e.date = Number(document.getElementById("date").value);
-  e.title = document.getElementById("eventTitle").value;
-  e.description = document.getElementById("desc").value;
-
-  render();
-}
-
-/* zoom simple */
-window.addEventListener("wheel", (e) => {
-  zoom += e.deltaY * -0.001;
-  zoom = Math.max(0.3, Math.min(zoom, 4));
+/* ZOOM */
+zoomInput.addEventListener("input", (e) => {
+  zoom = Number(e.target.value);
   render();
 });
 
