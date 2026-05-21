@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Éditeur - Frises-Chronos</title>
+
+  <link rel="stylesheet" href="css/editor.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+<header class="topbar">
+  <input id="title" placeholder="Nom de la frise">
+
+  <button onclick="addEvent()">Ajouter</button>
+  <button onclick="exportBIN()">.bin</button>
+  <button onclick="exportPNG()">PNG</button>
+  <button onclick="exportPDF()">PDF</button>
+
+  <input type="file" onchange="importBIN(event)">
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <h3>Événements</h3>
+    <div id="list"></div>
+  </aside>
+
+  <main class="timeline" id="timeline"></main>
+
+  <aside class="panel">
+    <h3>Modifier</h3>
+
+    <input id="date" placeholder="Date">
+    <input id="eventTitle" placeholder="Titre">
+    <input id="desc" placeholder="Description">
+
+    <button onclick="saveEdit()">Sauvegarder</button>
+  </aside>
+
+</div>
+
+<script src="js/app.js"></script>
+<script src="js/export.js"></script>
+<script src="js/import.js"></script>
+
+</body>
+</html>
