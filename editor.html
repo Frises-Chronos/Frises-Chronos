@@ -3,21 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChronoNova — Éditeur de frises chronologiques</title>
+  <title>Frises-Chronos — Éditeur de frises chronologiques</title>
+
   <link rel="stylesheet" href="https://unpkg.com/vis-timeline@7.12.2/styles/vis-timeline-graph2d.min.css" />
   <link rel="stylesheet" href="css/editor.css" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
+
 <body>
   <div class="editor-shell">
+
     <header class="topbar">
+
       <div class="topbar-left">
         <div class="brand-row">
-          <img src="assets/logo.png" alt="ChronoNova" class="brand-logo" />
+          <img src="assets/logo.png" alt="Frises-Chronos" class="brand-logo" />
+
           <div>
-            <p class="brand-name">ChronoNova</p>
+            <p class="brand-name">Frises-Chronos</p>
             <p class="brand-tag">Éditeur de frises chronologiques</p>
           </div>
         </div>
@@ -29,89 +35,10 @@
         <button class="btn btn-secondary" id="exportPngBtn">Exporter PNG</button>
         <button class="btn btn-secondary" id="exportPdfBtn">Exporter PDF</button>
         <button class="btn btn-ghost" id="loadProjectBtn">Ouvrir .bin</button>
+
         <input type="file" id="projectFile" accept=".bin" hidden />
       </div>
+
     </header>
 
     <main class="editor-grid">
-      <aside class="sidebar sidebar-left">
-        <div class="panel">
-          <div class="panel-header">
-            <h2>Événements</h2>
-            <button class="icon-btn" id="addEventBtn" title="Ajouter un événement">+</button>
-          </div>
-          <div class="panel-search">
-            <input type="search" id="searchInput" placeholder="Rechercher..." />
-          </div>
-          <div id="eventList" class="event-list"></div>
-        </div>
-      </aside>
-
-      <section class="workspace">
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <span class="label">Projet</span>
-              <h1 id="timelineName">Histoire de France</h1>
-            </div>
-            <div class="timeline-zoom">
-              <button class="icon-btn" id="zoomOutBtn">–</button>
-              <span id="zoomLevel">100%</span>
-              <button class="icon-btn" id="zoomInBtn">+</button>
-            </div>
-          </div>
-          <div id="timelineContainer" class="timeline-container"></div>
-        </div>
-      </section>
-
-      <aside class="sidebar sidebar-right">
-        <div class="panel">
-          <h2>Modifier l’événement</h2>
-          <form id="eventForm" class="event-form">
-            <label>
-              Titre
-              <input type="text" id="eventTitle" placeholder="Titre du moment" />
-            </label>
-            <label>
-              Année
-              <input type="number" id="eventDate" placeholder="1789" />
-            </label>
-            <label>
-              Description
-              <textarea id="eventDescription" rows="5" placeholder="Décrivez l’événement..."></textarea>
-            </label>
-            <label>
-              Couleur
-              <input type="color" id="eventColor" value="#3b82f6" />
-            </label>
-            <div class="form-actions">
-              <button type="button" class="btn btn-primary" id="updateEventBtn">Mettre à jour</button>
-              <button type="button" class="btn btn-danger" id="deleteEventBtn">Supprimer</button>
-            </div>
-          </form>
-        </div>
-      </aside>
-    </main>
-
-    <div class="toast" id="toastNotification"></div>
-  </div>
-
-  <div class="tutorial-overlay" id="tutorialOverlay">
-    <div class="tutorial-card">
-      <h2>Bienvenue dans ChronoNova</h2>
-      <p>Ajoutez un événement, sélectionnez-le puis modifiez sa date, son titre et sa couleur.</p>
-      <p>Utilisez les boutons en haut pour sauvegarder, ouvrir un projet ou exporter votre frise.</p>
-      <button class="btn btn-primary" id="closeTutorial">J’ai compris</button>
-    </div>
-  </div>
-
-  <script src="https://unpkg.com/vis-timeline@7.12.2/standalone/umd/vis-timeline-graph2d.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNa5/2P8qPjnkJnd6t9dV0p50pXkan7DqCBdatI9bNxPW+vHwYieC2i1Fa7GxA8flzalENX1wHA6Hhks7qX1AA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-hp+gKf8d/AXIi9I3Qq4GZGh6/k1H1OzhPS0q3F7XgZ6emxYxHAXk4Apo0snPwMPmJk2jAh0XhQNJ7OnIjX0GFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="js/storage.js"></script>
-  <script src="js/import.js"></script>
-  <script src="js/export.js"></script>
-  <script src="js/timeline.js"></script>
-  <script src="js/app.js"></script>
-</body>
-</html>
